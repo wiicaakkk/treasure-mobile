@@ -1,7 +1,13 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+// import 'package:treasure/Pages/favorite.dart';
+// import 'package:treasure/Pages/home.dart';
+// import 'package:treasure/Pages/homepage.dart';
+// import 'package:treasure/Pages/maps.dart';
+// import 'package:treasure/Pages/search.dart';
 import 'Pages/error_screen.dart';
 import 'Pages/loading_screen.dart';
 import 'Pages/auth_checker.dart';
@@ -11,7 +17,7 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-//  This is a FutureProvider that will be used to check whether the firebase has been initialized or not
+
 final firebaseinitializerProvider = FutureProvider<FirebaseApp>((ref) async {
   return await Firebase.initializeApp();
 });
@@ -20,25 +26,11 @@ class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //  We will watch this provider to see if the firebase has been initialized
-    //  As said this gives async value so it can gives 3 types of results
-    //  1. The result is a Future<FirebaseApp>
-    //  2. The result is a Future<Error>
-    //  3. It's still loading
 
     final initialize = ref.watch(firebaseinitializerProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      //  We will use the initialize to check if the firebase has been initialized
-      //  .when function can only be used with AsysncValue. If you hover over intialize
-      //  you can see what type of variable it is. I have left it dynamic here for your better understanding
-      //  Though it's always recommended to not to use dynamic variables.
-
-      // Now here if the Firebase is initialized we will be redirected to AuthChecker
-      // which checks if the user is logged in or not.
-
-      //  the other Two functions speaks for themselves.
       home: 
       initialize.when(
           data: (data) {
@@ -49,3 +41,73 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
+// class MainPage extends StatefulWidget {
+//   const MainPage({Key? key}) : super(key: key);
+
+//   @override
+//   State<MainPage> createState() => _MainPageState();
+// }
+
+// class _MainPageState extends State<MainPage> {
+
+//   final PersistentTabController _controller =
+//       PersistentTabController(initialIndex: 0);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text("Persistent Bottom Nav Bar"),
+//         elevation: 0,
+
+//       ),
+//       body: PersistentTabView(
+//         context,
+//         controller: _controller,
+//         screens: const [
+//           Home(),
+//           Search(),
+//           Favorite(),
+//           Maps(),
+//         ],
+//         items: _navBarsItems(),
+//         navBarStyle: NavBarStyle.style1,
+//       ),
+//     );
+//   }
+
+//   List<PersistentBottomNavBarItem> _navBarsItems() {
+//     return [
+//       PersistentBottomNavBarItem(
+//         icon: const Icon(CupertinoIcons.home),
+//         title: ("Home"),
+//         inactiveColorPrimary: CupertinoColors.systemGrey,
+//       ),
+//       PersistentBottomNavBarItem(
+//         icon: const Icon(CupertinoIcons.search),
+//         title: ("Search"),
+//         inactiveColorPrimary: CupertinoColors.systemGrey,
+//       ),
+//       PersistentBottomNavBarItem(
+//         icon: const Icon(CupertinoIcons.chat_bubble),
+//         title: ("Chat"),
+//         inactiveColorPrimary: CupertinoColors.systemGrey,
+//       ),
+//       PersistentBottomNavBarItem(
+//         icon: const Icon(CupertinoIcons.bell),
+//         title: ("Notification"),
+//         inactiveColorPrimary: CupertinoColors.systemGrey,
+//       ),
+//     ];
+//   }
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: Home_Page(),
+//     );
+//   }
+// }

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:ffi';
 import 'dart:convert';
 import 'package:treasure/Pages/home.dart';
@@ -6,17 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:treasure/models/post.dart';
-import 'package:treasure/services/remote_service.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // first variable is to get the data of Authenticated User
     final data = ref.watch(fireBaseAuthProvider);
 
-    //  Second variable to access the Logout Function
     final _auth = ref.watch(authenticationProvider);
     return Scaffold(
       appBar: AppBar(
@@ -37,16 +36,19 @@ class HomePage extends ConsumerWidget {
               width: double.infinity,
               child: MaterialButton(
                 onPressed: () => _auth.signOut(),
+                // ignore: sort_child_properties_last
                 child: const Text(
                   'Log Out',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
+                // ignore: prefer_const_constructors
                 textColor: Color.fromARGB(255, 0, 0, 0),
                 textTheme: ButtonTextTheme.primary,
                 minWidth: 100,
                 padding: const EdgeInsets.all(18),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
+                  // ignore: prefer_const_constructors
                   side: BorderSide(color: Color.fromARGB(255, 0, 0, 0)),
                 ),
               ),

@@ -15,6 +15,15 @@ class PlaceDetail extends StatelessWidget {
           centerTitle: true,
           elevation: 4.0,
           backgroundColor: Color.fromARGB(255, 5, 15, 23),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                  icon: Icon(Icons.favorite),
+                  onPressed: () {
+                  }),
+            )
+          ],
       ),
       body: Column(
         children: [
@@ -29,6 +38,14 @@ class PlaceDetail extends StatelessWidget {
             width: c_width,
             child: Row(
               children: <Widget>[
+                // Container(
+                //   height: 300,
+                //   child: Expanded(
+                //     child: (
+                //       Text(place['name'], style: TextStyle(fontSize: 15))
+                //     ),
+                //   ),
+                // ),
                 Expanded(
                   child: (
                     Text(place['description'], style: TextStyle(fontSize: 15),maxLines: 30,)

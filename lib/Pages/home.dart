@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_const_constructors
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:http/http.dart' as http;
 import 'home_page.dart';
 import 'place_detail.dart';
@@ -17,25 +19,62 @@ class Home extends StatelessWidget {
     return json.decode(response.body);
   }
 
+  // ignore: unused_element
   void _incrementCounter() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+        // bottomNavigationBar: Container(
+        //   color: const Color.fromARGB(255, 5, 15, 23),
+        //   child: Padding(
+        //     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
+        //     child: GNav(
+        //       backgroundColor: const Color.fromARGB(255, 5, 15, 23),
+        //       color: Colors.white,
+        //       activeColor: Colors.white,
+        //       tabBackgroundColor: Colors.grey,
+        //       gap: 8,
+        //       padding: EdgeInsets.all(16),
+        //       tabs: const [
+        //         GButton(
+        //           icon: Icons.home,
+        //           text: 'Home',
+        //         ),
+        //         GButton(
+        //           icon: Icons.favorite_border,
+        //           text: 'Favorite',
+        //         ),
+        //         GButton(
+        //           icon: Icons.search,
+        //           text: 'Search',
+        //         ),
+        //         GButton(
+        //           icon: Icons.map,
+        //           text: 'Maps',
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         appBar: AppBar(
-          title: Text('Treasure'),
+          title: const Text('Treasure'),
           centerTitle: true,
           elevation: 4.0,
-          backgroundColor: Color.fromARGB(255, 5, 15, 23),
+          backgroundColor: const Color.fromARGB(255, 5, 15, 23),
           actions: [
-            IconButton(
-                icon: Icon(Icons.account_circle),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
-                })
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+                  icon: Icon(Icons.account_circle),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HomePage()),
+                    );
+                  }),
+            )
           ],
         ),
         body: FutureBuilder(
@@ -43,49 +82,64 @@ class Home extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
                     itemCount: (snapshot.data as dynamic)['data'].length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: 110,
+                      return SizedBox(
+                        height: 120,
                         child: Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)),
                           elevation: 3,
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => PlaceDetail(place: (snapshot.data as dynamic)['data'][index],)));
+                                          builder: (context) => PlaceDetail(
+                                                place: (snapshot.data
+                                                    as dynamic)['data'][index],
+                                              )));
                                 },
-                                child: Container(
-                                  padding: EdgeInsets.all(2),
-                                  height: 150,
-                                  width: 150,
-                                  child: ClipRRect (
-                                    borderRadius: BorderRadius.circular(10),
-                                    child: Image.network((snapshot.data
-                                        as dynamic)['data'][index]['image']),
+                                child: ClipRRect(
+                                  child: Image.network(
+                                    (snapshot.data as dynamic)['data'][index]
+                                        ['image'],
+                                    fit: BoxFit.cover,
+                                    height: 175,
+                                    width: 140,
+                                    alignment: Alignment.center,
                                   ),
                                 ),
                               ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      (snapshot.data as dynamic)['data'][index]
-                                          ['name'],
-                                      // ignore: prefer_const_constructors
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                    // Expanded(child: Text((snapshot.data as dynamic) ['data'][index]['description'],style: TextStyle(fontSize: 15), maxLines: 10, overflow: TextOverflow.ellipsis,)),
-                                    // Text((snapshot.data as dynamic) ['data'][index]['price']),
-                                  ],
+                              Expanded(
+                                child: Container(
+                                  height: 175,
+                                  padding: const EdgeInsets.all(17),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        (snapshot.data as dynamic)['data']
+                                            [index]['name'],
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      const Text('Waiting time: 2hrs'),
+                                      Text(
+                                        'Closes at 10PM',
+                                        style: TextStyle(
+                                            color: Colors.redAccent[100]),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
