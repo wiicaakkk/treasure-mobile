@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:http/http.dart' as http;
+import 'package:treasure/config/palette.dart';
 import 'home_page.dart';
 import 'place_detail.dart';
 
@@ -148,8 +149,19 @@ class Home extends StatelessWidget {
                       );
                     });
               } else {
-                return Text('data error');
+                return Center(
+                  child: Container(
+                    color: Colors.white,
+                    // ignore: sort_child_properties_last
+                    child: CircularProgressIndicator(
+                      color: Palette.kToDark,
+                    ),
+                    alignment: const Alignment(0.0, 0.0),
+                  ),
+                );
               }
-            }));
+            }
+      )
+    );
   }
 }
