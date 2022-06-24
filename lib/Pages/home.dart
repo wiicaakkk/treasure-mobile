@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
+// import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:treasure/config/palette.dart';
 import 'home_page.dart';
@@ -26,7 +26,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
         // bottomNavigationBar: Container(
         //   color: const Color.fromARGB(255, 5, 15, 23),
         //   child: Padding(

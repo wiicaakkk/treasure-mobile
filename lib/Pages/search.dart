@@ -4,8 +4,6 @@ import 'package:treasure/services/Api_service.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
-
 class Search extends StatefulWidget {
   Search({Key? key}) : super(key: key);
 
@@ -91,11 +89,12 @@ class _SearchState extends State<Search> {
                 ),
               ),
             ),
-            loading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Expanded(
+            // loading
+            //     ? Center(
+            //         child: CircularProgressIndicator(),
+            //       )
+            //     : 
+                Expanded(
                     child: _search.length != 0 || controller.text.isNotEmpty
                         ? ListView.builder(
                             itemCount: _search.length,

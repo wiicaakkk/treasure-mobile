@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
 
 class PlaceDetail extends StatelessWidget {
+  // final String url = 'http://10.0.2.2:8000/api/places';
+
+  // Future getPlaces() async {
+  //   var response = await http.get(Uri.parse(url));
+  //   // print(json.decode(response.body));
+  //   return json.decode(response.body);
+  // }
+
+  // // ignore: unused_element
+  // void _incrementCounter() {}
+
   final Map place;
 
   PlaceDetail({required this.place});
@@ -37,14 +50,6 @@ class PlaceDetail extends StatelessWidget {
             width: c_width,
             child: Row(
               children: <Widget>[
-                // Container(
-                //   height: 300,
-                //   child: Expanded(
-                //     child: (
-                //       Text(place['name'], style: TextStyle(fontSize: 15))
-                //     ),
-                //   ),
-                // ),
                 Expanded(
                   child: (
                     Text(place['description'], style: TextStyle(fontSize: 15),maxLines: 30,)
