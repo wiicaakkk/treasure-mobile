@@ -47,12 +47,12 @@ class ProfileScreen extends StatelessWidget {
           ),
           SizedBox(height: kSpacingUnit.w * 2),
           Text(
-            'Nicolas Adams',
+            'Khairat Hayati',
             style: titleText,
           ),
           SizedBox(height: kSpacingUnit.w * 0.5),
           Text(
-            'nicolasadams@gmail.com',
+            'khairathayati@gmail.com',
             style: titleText,
           ),
           SizedBox(height: kSpacingUnit.w * 2),
@@ -62,12 +62,6 @@ class ProfileScreen extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
               color: Theme.of(context).accentColor,
-            ),
-            child: Center(
-              child: Text(
-                'Upgrade to PRO',
-                style: textButton,
-              ),
             ),
           ),
         ],
