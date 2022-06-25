@@ -1,12 +1,12 @@
-import 'package:treasure/Pages/error_screen.dart';
-import 'package:treasure/Pages/homepage.dart';
+import 'package:treasure/Pages/firebase/error_screen.dart';
+import 'package:treasure/Pages/navbar.dart';
 import 'package:treasure/Pages/loading_screen.dart';
 import 'package:treasure/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'home_page.dart';
+import '../profile.dart';
 import 'login_page.dart';
-import 'home.dart';
+import '../page/home.dart';
 
 class AuthChecker extends ConsumerWidget {
   const AuthChecker({Key? key}) : super(key: key);

@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:treasure/Pages/favorite.dart';
-import 'package:treasure/Pages/home.dart';
-import 'package:treasure/Pages/maps.dart';
-import 'package:treasure/Pages/search.dart';
+import 'package:treasure/Pages/page/favorite.dart';
+import 'package:treasure/Pages/page/home.dart';
+import 'package:treasure/Pages/page/maps.dart';
+import 'package:treasure/Pages/page/search.dart';
 
 class Home_Page extends StatefulWidget {
   Home_Page({Key? key}) : super(key: key);

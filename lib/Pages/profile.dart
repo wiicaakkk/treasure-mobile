@@ -2,7 +2,7 @@
 
 import 'dart:ffi';
 import 'dart:convert';
-import 'package:treasure/Pages/home.dart';
+import 'package:treasure/Pages/page/home.dart';
 import 'package:treasure/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
