@@ -8,9 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:treasure/Pages/homepage.dart';
 // import 'package:treasure/Pages/maps.dart';
 // import 'package:treasure/Pages/search.dart';
-import 'Pages/error_screen.dart';
+import 'Pages/firebase/error_screen.dart';
 import 'Pages/loading_screen.dart';
-import 'Pages/auth_checker.dart';
+import 'Pages/firebase/auth_checker.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
