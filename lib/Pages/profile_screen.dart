@@ -144,10 +144,6 @@ class ProfileScreen extends StatelessWidget {
                           text: 'Settings',
                           hasNavigation: false),
                       ProfileListItem(
-                          icon: LineAwesomeIcons.user_plus,
-                          text: 'Invite a Friend',
-                          hasNavigation: false),
-                      ProfileListItem(
                         icon: LineAwesomeIcons.alternate_sign_out,
                         text: 'Logout',
                         hasNavigation: false,
